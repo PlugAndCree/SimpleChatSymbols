@@ -1,6 +1,7 @@
 symbols:
     #chat syntax: [key] will be replaced to "value"
     #[smile] = ☺
+    #global permission for symbols: simplechatsymbols.chat
     smile: "☺"
     hearth: "♥"
     dot: "•"

@@ -11,6 +11,8 @@ import it.plugandcree.simplechatsymbols.SimpleChatSymbols;
 public class PlayerChat implements Listener {
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
+		if(!e.getPlayer().hasPermission("simplechatsymbols.chat")) return;
+		
 		String message = e.getMessage();
 		
 		HashMap<String, String> symbols = (HashMap<String, String>) SimpleChatSymbols.getInstance().getSymbols();
