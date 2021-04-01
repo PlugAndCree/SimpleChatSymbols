@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import it.plugandcree.simplechatsymbols.config.ConfigProcessor;
 import it.plugandcree.simplechatsymbols.config.CustomConfig;
+import it.plugandcree.simplechatsymbols.events.PlayerChat;
 
 /**
  * @author Nicola
@@ -26,7 +27,7 @@ public class SimpleChatSymbols extends JavaPlugin {
 
 		reloadConfig();
 		
-		instance.getLogger().info(symbols.toString());
+		getServer().getPluginManager().registerEvents(new PlayerChat(), this);
 	}
 
 	public void reloadConfig() {
