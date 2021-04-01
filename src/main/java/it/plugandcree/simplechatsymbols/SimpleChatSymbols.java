@@ -2,10 +2,12 @@ package it.plugandcree.simplechatsymbols;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import it.plugandcree.simplechatsymbols.config.ConfigProcessor;
 import it.plugandcree.simplechatsymbols.config.CustomConfig;
 
 /**
@@ -16,20 +18,24 @@ public class SimpleChatSymbols extends JavaPlugin {
 	private static SimpleChatSymbols instance;
 	private CustomConfig symbolConfig;
 	private CustomConfig langConfig;
-	
+	private Map<String, String> symbols;
+
 	@Override
 	public void onEnable() {
 		instance = this;
-		
+
 		reloadConfig();
 		
+		instance.getLogger().info(symbols.toString());
 	}
-	
+
 	public void reloadConfig() {
 		setSymbolConfig(createConfigFile("symbols.yml"));
 		setLangConfig(createConfigFile("lang.yml"));
+
+		setSymbols(ConfigProcessor.getSymbols(getSymbolConfig(), "symbols"));
 	}
-	
+
 	private CustomConfig createConfigFile(String name) {
 		File fc = new File(getDataFolder(), name);
 		if (!fc.exists()) {
@@ -64,5 +70,13 @@ public class SimpleChatSymbols extends JavaPlugin {
 
 	public static SimpleChatSymbols getInstance() {
 		return instance;
+	}
+
+	public Map<String, String> getSymbols() {
+		return symbols;
+	}
+
+	public void setSymbols(Map<String, String> symbols) {
+		this.symbols = symbols;
 	}
 }
