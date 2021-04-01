@@ -1,6 +1,7 @@
 package it.plugandcree.simplechatsymbols.events;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ public class PlayerChat implements Listener {
 		
 		HashMap<String, String> symbols = (HashMap<String, String>) SimpleChatSymbols.getInstance().getSymbols();
 		
-		for(HashMap.Entry<String, String> s : symbols.entrySet()) {
+		for(Entry<String, String> s : symbols.entrySet()) {
 			message = message.replace(s.getKey(), s.getValue());
 		}
 		e.setMessage(message);

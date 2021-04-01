@@ -7,6 +7,7 @@ import java.util.Map;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import it.plugandcree.simplechatsymbols.commands.MainCommand;
 import it.plugandcree.simplechatsymbols.config.ConfigProcessor;
 import it.plugandcree.simplechatsymbols.config.CustomConfig;
 import it.plugandcree.simplechatsymbols.events.PlayerChat;
@@ -27,7 +28,11 @@ public class SimpleChatSymbols extends JavaPlugin {
 
 		reloadConfig();
 		
+		new MainCommand().register(this);
+		
 		getServer().getPluginManager().registerEvents(new PlayerChat(), this);
+	
+	
 	}
 
 	public void reloadConfig() {
