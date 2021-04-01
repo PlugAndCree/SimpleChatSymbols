@@ -1,0 +1,11 @@
+symbols:
+    #chat syntax: [key] will be replaced to "value"
+    #[smile] = ☺
+    smile: "☺"
+    hearth: "♥"
+    dot: "•"
+    circle: "○"
+    music: "♪"
+    moremusic: "♫"
+    right: "►"
+    left: "◄"
