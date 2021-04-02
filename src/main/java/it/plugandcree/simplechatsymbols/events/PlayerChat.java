@@ -12,13 +12,15 @@ import it.plugandcree.simplechatsymbols.SimpleChatSymbols;
 public class PlayerChat implements Listener {
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
-		if(!e.getPlayer().hasPermission("simplechatsymbols.chat")) return;
-		
+
 		String message = e.getMessage();
-		
+
 		HashMap<String, String> symbols = (HashMap<String, String>) SimpleChatSymbols.getInstance().getSymbols();
-		
-		for(Entry<String, String> s : symbols.entrySet()) {
+
+		for (Entry<String, String> s : symbols.entrySet()) {
+			if (!e.getPlayer().hasPermission("simplechatsymbols.chat." + s.getKey())
+					&& !e.getPlayer().hasPermission("simplechatsymbols.chat"))
+				continue;
 			message = message.replace(s.getKey(), s.getValue());
 		}
 		e.setMessage(message);
