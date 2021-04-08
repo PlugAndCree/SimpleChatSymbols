@@ -3,7 +3,7 @@ symbols:
     #[smile] = ☺
     #global permission for symbols: simplechatsymbols.chat
     smile: "☺"
-    hearth: "♥"
+    heart: "♥"
     dot: "•"
     circle: "○"
     music: "♪"
